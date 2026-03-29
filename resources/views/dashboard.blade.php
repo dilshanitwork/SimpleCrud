@@ -156,7 +156,11 @@
         </div>
         
         <div class="actions">
-            <a href="/users" class="btn btn-primary">Manage Users</a>
+            @if(auth()->user()->hasPermissionTo('edit-users'))
+                <a href="/users" class="btn btn-primary">Manage Users</a>
+            @else
+                <a href="/users" class="btn btn-secondary">Show Users</a>
+            @endif
         </div>
         
         <form method="POST" action="/logout" class="logout-form">
